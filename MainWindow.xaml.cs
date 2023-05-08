@@ -162,6 +162,15 @@ namespace Calculator_project
             secondNumber = 0f;
             operators = -1;
         }
+
+        public void btn_Backspace_Click(object sender, RoutedEventArgs e)
+        {
+            if (txt_Number.Text.Length > 0)
+            {
+                txt_Number.Text = txt_Number.Text.Substring(0, txt_Number.Text.Length - 1);
+            }
+        }
+
         public void btn_equal_Click(object sender, RoutedEventArgs e)
         {
             secondNumber = Convert.ToSingle(txt_Number.Text); //將輸入文字框轉換成浮點數，存入第二個數字的全域變數
@@ -180,9 +189,6 @@ namespace Calculator_project
                     break;
                 case 3:
                     finalResults = firstNumber / secondNumber;
-                    break;
-                case 4:
-                    txt_Number.Text = string.Format("{0:P2}", finalResults);
                     break;
             }
             txt_Number.Text = string.Format("{0:0.##########}", finalResults); //在輸入文字框中，顯示最後計算結果，並且轉換成格式化的字串內容
